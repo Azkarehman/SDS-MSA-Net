@@ -231,9 +231,9 @@ Z_3,Z_2,Z_1,Z = main_decoder(X_1,X_2,X_3,X_4)
 model = tf.keras.models.Model(inputs = [x_input1,x_input2], outputs = [Z_3,Z_2,Z_1,Z], name = "ResNet34")
 print(model.summary())
 
-Adam = tf.keras.optimizers.Adam(learning_rate=0.001,beta_1=0.9,beta_2=0.999,epsilon=1e-07)
+Adam = tf.keras.optimizers.SGD(learning_rate=0.001,beta_1=0.9,beta_2=0.999,epsilon=1e-07)
 
 model.compile(optimizer=Adam, loss='binary_crossentropy')
 
-hist = model.fit(train_datagen,epochs=5)
+hist = model.fit(train_datagen,epochs=600)
 
